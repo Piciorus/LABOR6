@@ -1,0 +1,5 @@
+C:/FACULTATE/CLION/LABORS/LABOR6/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/FACULTATE/CLION/LABORS/LABOR6/cmake-build-debug/CMakeFiles/LABOR6.dir
+C:/FACULTATE/CLION/LABORS/LABOR6/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/FACULTATE/CLION/LABORS/LABOR6/cmake-build-debug/CMakeFiles/LABOR6_autogen_timestamp_deps.dir
+C:/FACULTATE/CLION/LABORS/LABOR6/cmake-build-debug/CMakeFiles/LABOR6_autogen.dir
