@@ -20,6 +20,7 @@ public:
     void addToFavorites(Car car);
     void printCar(Car car);
     void showFavorites();
+    int validateINT();
 
     Car_Controller();
 };

@@ -5,58 +5,56 @@
 Car_Controller::Car_Controller(std::shared_ptr<CrudRepository<Car>> &carRepo) : repo(carRepo) {}
 
 void Car_Controller::add_car(Car car) {
-        repo->addToEnd(car);
-        //setCarRepo(repo);
+    repo->addToEnd(car);
 }
 
 bool Car_Controller::delete_car(Car car) {
-        if (repo->remove(car.getId()))
-            return true;
-        return false;
+    if (repo->remove(car.getId()))
+        return true;
+    return false;
 }
 
 bool Car_Controller::update_car(Car old_car, Car new_car) {
-        for (Car &car: repo->getStorage())
-            if (car.getCarModel() == old_car.getCarModel() && car.getCarMake() == old_car.getCarMake()) {
-                car.setCarModel(new_car.getCarModel());
-                car.setCarMake(new_car.getCarMake());
-                car.setRegistrationYear(new_car.getRegistrationYear());
-                car.setPrice(new_car.getPrice());
-                car.setKilometrage(new_car.getKilometrage());
-                car.setRange(new_car.getRange());
-                car.setChargeTimeMinutes(new_car.getChargeTimeMinutes());
-                return true;
-            }
-        return false;
+    for (Car &car: repo->getStorage())
+        if (car.getCarModel() == old_car.getCarModel() && car.getCarMake() == old_car.getCarMake()) {
+            car.setCarModel(new_car.getCarModel());
+            car.setCarMake(new_car.getCarMake());
+            car.setRegistrationYear(new_car.getRegistrationYear());
+            car.setPrice(new_car.getPrice());
+            car.setKilometrage(new_car.getKilometrage());
+            car.setRange(new_car.getRange());
+            car.setChargeTimeMinutes(new_car.getChargeTimeMinutes());
+            return true;
+        }
+    return false;
 }
 
 std::vector<Car> Car_Controller::search_car(std::string car_model, std::string car_make) {
     std::vector<Car> cars;
-        for (const auto & i : repo->getStorage())
-            if (i.getCarModel() == car_model &&
-                i.getCarMake() == car_make)
-                cars.push_back(i);
-        return cars;
+    for (const auto & i : repo->getStorage())
+        if (i.getCarModel() == car_model && i.getCarMake() == car_make)
+            cars.push_back(i);
+    return cars;
 
 }
 
 std::vector<Car> Car_Controller::filter_car(int car_km) {
     std::vector<Car> cars;
-        for (const auto &i: repo->getStorage())
-            if (i.getKilometrage() <= car_km)
-                cars.push_back(i);
-        return cars;
+    for (const auto &i: repo->getStorage())
+        if (i.getKilometrage() <= car_km)
+            cars.push_back(i);
+    return cars;
 }
 
 static bool bypreis(const Car& c1, const Car& c2 ) { return c1.getPrice() < c2.getPrice(); }
 
 std::vector<Car> Car_Controller::asc_sort() {
     std::vector<Car> cars;
-        for (const auto &i: repo->getStorage()) {
-            cars.push_back(i);
-        }
-        sort(cars.begin(), cars.end(), bypreis);
-        return cars;
+    for (const auto &i: repo->getStorage()) {
+        cars.push_back(i);
+    }
+    sort(cars.begin(), cars.end(), bypreis);
+    return cars;
 }
 
 void Car_Controller::addToFavorites(Car car) {
@@ -77,6 +75,28 @@ std::vector<Car> Car_Controller::get_data() const{
     for (auto &car : repo->getStorage())
         data.push_back(car);
     return data;
+}
+
+int Car_Controller::validateINT()
+{
+    int num;
+    bool aux = true;
+    cin.exceptions(std::istream::failbit);
+    do {
+        try {
+            cin >> num;
+            aux = true;
+        }
+        catch (std::ios_base::failure& fail) {
+            aux = false;
+            cout << "PLease insert a valid number:" << endl;
+            cin.clear();
+            std::string tmp;
+            getline(cin, tmp);
+        }
+    } while (aux == false);
+
+    return num;
 }
 
 

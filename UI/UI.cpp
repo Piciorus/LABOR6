@@ -87,19 +87,19 @@ Car Ui::readCar() {
     std::cout << std::endl;
 
     std::cout << "Price : ";
-    std::cin >> price;
+    price=controller.validateINT();
     std::cout << std::endl;
 
     std::cout << "Charge Time in minutes : ";
-    std::cin >> chargeTimeMinutes;
+    chargeTimeMinutes=controller.validateINT();
     std::cout << std::endl;
 
     std::cout << "Range : ";
-    std::cin >> range;
+    range=controller.validateINT();
     std::cout << std::endl;
 
     std::cout << "Kilometrage? :) : ";
-    std::cin >> kilometrage;
+    kilometrage=controller.validateINT();
     std::cout << std::endl;
     return {carModel, carMake, registrationYear, kilometrage, price, chargeTimeMinutes, range};
 }
@@ -168,6 +168,6 @@ void Ui::testAll() {
     shared_ptr<CrudRepository<Car>> rep;
     rep = std::make_shared<Car_Repository>();
     Car_Controller ct(rep);
-    //test test(ct);
-    //test.testAll();
+    test test(ct);
+    test.testAll();
 }
