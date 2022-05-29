@@ -11,8 +11,8 @@ public:
     Car_Repository();
     Car_Repository(const std::vector<Car> &storage);
     void addToEnd(Car car);
-    bool remove(Car car);
-    std::vector<Car> &getStorage();
+    bool remove(int ID);
+    std::vector<Car> getStorage();
     int findId();
     void setStorage(const std::vector<Car> &storage);
 };

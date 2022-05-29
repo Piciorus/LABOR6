@@ -3,7 +3,7 @@
 Car_Repository::Car_Repository(const std::vector<Car> &storage) : storage(storage) {}
 
 
-std::vector<Car> &Car_Repository::getStorage() {
+std::vector<Car> Car_Repository::getStorage() {
     return storage;
 }
 
@@ -16,9 +16,9 @@ void Car_Repository::addToEnd(Car car) {
     storage.push_back(car);
 }
 
-bool Car_Repository::remove(Car car) {
+bool Car_Repository::remove(int ID) {
     for(int i=0;i<storage.size();i++)
-        if(getStorage()[i].getCarModel()==car.getCarModel() && getStorage()[i].getCarMake()==car.getCarMake())
+        if(storage[i].getId()==ID)
         {
             storage.erase(storage.begin()+i);
             return true;

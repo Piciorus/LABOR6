@@ -18,12 +18,15 @@ int main(int argc, char *argv[])
             Car(6,"E-Tron", "Audi", "25.02.2022", 150, 250, 22, 11)};
 
     shared_ptr<CrudRepository<Car>> repo;
+    repo = std::make_shared<CSVRepository>();
+
     repo = std::make_shared<Car_Repository>(cars);
     Car_Controller controller(repo);
 
     QApplication a(argc, argv);
     QTableView table;
     MyModel model( controller, nullptr);
+    table.resize(1210,500);
     table.setSortingEnabled(true);
     table.sortByColumn(5, Qt::AscendingOrder);
     table.setModel(&model);

@@ -10,9 +10,9 @@ private:
 public:
     CSVRepository();
     void addToEnd(Car car);
-    bool remove(Car car);
+    bool remove(int ID);
     int findId();
-    vector<Car> &getStorage();
+    vector<Car> getStorage();
     void setStorage(const vector<Car> &elems);
 };
 

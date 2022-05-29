@@ -10,7 +10,7 @@ void Car_Controller::add_car(Car car) {
 }
 
 bool Car_Controller::delete_car(Car car) {
-        if (repo->remove(car))
+        if (repo->remove(car.getId()))
             return true;
         return false;
 }
