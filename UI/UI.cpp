@@ -165,7 +165,8 @@ Ui::Ui(Car_Controller controller) : controller(controller){
 }
 
 void Ui::testAll() {
-    std::shared_ptr<Car_Repository> rep = std::make_shared<Car_Repository>();
+    shared_ptr<CrudRepository<Car>> rep;
+    rep = std::make_shared<Car_Repository>();
     Car_Controller ct(rep);
     //test test(ct);
     //test.testAll();

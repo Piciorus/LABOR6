@@ -3,7 +3,7 @@
 #include "../DOMAIN/Car.h"
 #include <vector>
 
-class Car_Repository : CrudRepository<Car> {
+class Car_Repository : public CrudRepository<Car> {
 private:
     std::vector<Car> storage;
 

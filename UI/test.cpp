@@ -9,7 +9,7 @@ void test::testAdd() {
     control.add_car(c1);
     control.add_car(c2);
     control.add_car(c3);
-    assert(control.getCarRepo()->getStorage().size()==3);
+    assert(control.get_data().size()==3);
 }
 
 void test::testDelete() {
@@ -22,7 +22,7 @@ void test::testDelete() {
     control.delete_car(c4);
     control.delete_car(c5);
     control.delete_car(c6);
-    assert(control.getCarRepo()->getStorage().size()==3);
+    assert(control.get_data().size()==3);
 }
 
 void test::testFilter() {

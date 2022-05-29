@@ -3,7 +3,7 @@
 #include "../REPOSITORY/CRUD-Repository.h"
 #include "../DOMAIN/Car.h"
 
-class CSVRepository : CrudRepository<Car>{
+class CSVRepository : public CrudRepository<Car>{
 private:
     string file;
     int id;
