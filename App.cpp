@@ -4,12 +4,13 @@
 #include "DOMAIN/Car.h"
 #include <string>
 #include <iostream>
+#include <QTableWidget>
 #include "QT/CustomTable.h"
+#include "CSV-FILE-REPOSITORY/CSVRepository.h"
+#include <QApplication>
+#include <QTextStream>
 #include <QDebug>
-#include <QLocale>
-#include <QRandomGenerator>
-#include <QtWidgets>
-
+#include <QSortFilterProxyModel>
 
 int main(int argc, char *argv[])
 {
@@ -32,12 +33,12 @@ int main(int argc, char *argv[])
     QTableView table;
     MyModel model( controller, nullptr);
     table.resize(1210,500);
-//    table.setSortingEnabled(true);
-    table.setModel(&model);
+
+    QSortFilterProxyModel * mSortFilterModel = new QSortFilterProxyModel();
+    mSortFilterModel->setDynamicSortFilter(true);
+    mSortFilterModel->setSourceModel(&model);
+    table.setModel(mSortFilterModel);
     table.setSortingEnabled(true);
-    table.sortByColumn(0,Qt::AscendingOrder);
-    table.sortByColumn(1,Qt::AscendingOrder);
-    table.sortByColumn(2,Qt::AscendingOrder);
 
     table.show();
     return a.exec();
