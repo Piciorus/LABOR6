@@ -5,6 +5,10 @@
 #include <string>
 #include <iostream>
 #include "QT/CustomTable.h"
+#include <QDebug>
+#include <QLocale>
+#include <QRandomGenerator>
+#include <QtWidgets>
 
 
 int main(int argc, char *argv[])
@@ -23,15 +27,21 @@ int main(int argc, char *argv[])
     repo = std::make_shared<Car_Repository>(cars);
     Car_Controller controller(repo);
 
+
     QApplication a(argc, argv);
     QTableView table;
     MyModel model( controller, nullptr);
     table.resize(1210,500);
-    table.setSortingEnabled(true);
-    table.sortByColumn(5, Qt::AscendingOrder);
+//    table.setSortingEnabled(true);
     table.setModel(&model);
+    table.setSortingEnabled(true);
+    table.sortByColumn(0,Qt::AscendingOrder);
+    table.sortByColumn(1,Qt::AscendingOrder);
+    table.sortByColumn(2,Qt::AscendingOrder);
+
     table.show();
     return a.exec();
+
 }
 
 
