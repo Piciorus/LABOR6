@@ -15,8 +15,9 @@ bool Car_Controller::delete_car(Car car) {
 }
 
 bool Car_Controller::update_car(Car old_car, Car new_car) {
-    for (Car &car: repo->getStorage())
-        if (car.getCarModel() == old_car.getCarModel() && car.getCarMake() == old_car.getCarMake()) {
+    vector<Car> stor = repo->getStorage();
+    for (Car &car: stor)
+        if (car.getId() == old_car.getId() ) {
             car.setCarModel(new_car.getCarModel());
             car.setCarMake(new_car.getCarMake());
             car.setRegistrationYear(new_car.getRegistrationYear());
@@ -24,6 +25,7 @@ bool Car_Controller::update_car(Car old_car, Car new_car) {
             car.setKilometrage(new_car.getKilometrage());
             car.setRange(new_car.getRange());
             car.setChargeTimeMinutes(new_car.getChargeTimeMinutes());
+            repo->setStorage(stor);
             return true;
         }
     return false;
